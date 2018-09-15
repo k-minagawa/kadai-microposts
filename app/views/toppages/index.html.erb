@@ -1,0 +1,22 @@
+<% unless logged_in? %>
+  <div class="center jumbotron">
+    <div class="text-center">
+      <h1>Welcome!</h1>
+      <%= link_to "Sign up now!", signup_path, class: "btn btn-outline-info btn-lg" %>
+    </div>
+  </div>
+<% else %>
+  <div class="row">
+    <div class="col-md-3 mb-4 px-3">
+      <%= form_for(@micropost) do |f| %>
+        <div class="form-group">
+          <%= f.text_area :content, class: "form-control", rows:5, wrap:"off" %>
+        </div>
+        <%= f.submit "投稿", class: "btn btn-outline-primary btn-block" %>
+      <% end %>
+    </div>
+    <div class="col-md-8 px-3">
+      <%= render 'microposts/microposts', microposts: @microposts %>
+    </div>
+  </div>
+<% end %>

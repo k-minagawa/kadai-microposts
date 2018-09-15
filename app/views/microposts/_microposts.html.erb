@@ -1,0 +1,19 @@
+<ul class="list-unstyled">
+  <% microposts.each do |micropost| %>
+    <li class="media mb-4">
+      <%=link_to(micropost.user) do 
+        image_tag("default.png", size:"40x40", style:"object-fit: cover;", alt:"default_image", class:"mr-2 mt-1 rounded-circle") 
+      end %>
+      <div class="media-body", style="max-width:730px;">
+        <div class="mb-1">
+          <span class="font-weight-bold"><%= micropost.user.name %></span>
+          <small class="font-weight-light"><%= micropost.created_at.strftime("%Y/%m/%d %I:%M %p") %></small>
+          <% if current_user == micropost.user %><%= link_to("削除", micropost, method: :delete, data: { confirm: "投稿を削除します" }, class: 'badge badge-danger badge-pill') %><% end %>
+        </div>
+        <%= simple_format(micropost.content, style: "word-break: break-all;") %>
+        <%= render "likes/like_button", micropost: micropost %>
+      </div>
+    </li>
+  <% end %>
+  <%= paginate microposts %>
+</ul>

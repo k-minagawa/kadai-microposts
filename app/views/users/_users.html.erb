@@ -1,0 +1,19 @@
+<% unless users.empty? %>
+  <table class="table table-striped table-sm table-responsive-sm">
+    <thead>
+      <tr>
+        <th>ユーザー名</th>
+        <th>メールアドレス</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% users.each do |user| %>
+        <tr>
+          <td><%= link_to(user.name, user ) %></td>
+          <td><%= user.email %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= paginate users %>
+<% end %>

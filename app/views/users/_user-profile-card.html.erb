@@ -1,0 +1,10 @@
+<div class="text-center mt-4">
+  <%= image_tag("default.png", size:"100x100", style:"object-fit: cover;", alt:"default_image", class:"rounded-circle") %>
+  <p class="mt-1 font-weight-bold"><%= user.name %></p>
+  <% if user.id == current_user.id %>
+    <%= link_to("編集する", edit_user_path(user), class:"btn btn-outline-secondary btn-sm" ) %>
+    <%= link_to("削除する", user_path(user), class:"btn btn-outline-danger btn-sm", method: :delete, data: {confirm: "Are you crazy?"} ) %>
+  <% else %>
+    <%= render 'relationships/follow_button', user: user %>
+  <% end %>
+</div>

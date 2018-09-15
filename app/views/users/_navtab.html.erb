@@ -1,0 +1,14 @@
+<ul class="nav nav-tabs mb-1">
+  <li class="nav-item">
+    <%=link_to("投稿", user_path(user), style: "padding: .2rem .6rem; font-size: .85rem; border-radius: 0;", class: "nav-link #{'active' if current_page?(user_path(user)) }") %>
+  </li>
+  <li class="nav-item ">
+    <%=link_to("フォロー", followings_user_path(user), style: "padding: .2rem .6rem; font-size: .85rem; border-radius: 0;", class: "nav-link #{ 'active' if current_page?(followings_user_path(user)) }") %>
+  </li>
+  <li class="nav-item">
+    <%=link_to("フォロワー", followers_user_path(user), style: "padding: .2rem .6rem; font-size: .85rem; border-radius: 0;", class: "nav-link #{ 'active' if current_page?(followers_user_path(user)) }") %>
+  </li>
+  <li class="nav-item">
+    <%=link_to("いいね", likes_user_path(user), style: "padding: .2rem .6rem; font-size: .85rem; border-radius: 0;", class: "nav-link #{ 'active' if current_page?(likes_user_path(user)) }") %>
+  </li>
+</ul>
